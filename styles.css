@@ -113,9 +113,11 @@ img {
 
 .hero {
   padding: 88px 0 40px;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 36px;
+  align-items: center;
+  min-height: 70vh;
 }
 
 .hero h1 {
@@ -131,8 +133,10 @@ img {
 
 .hero-image {
   width: 100%;
-  margin-top: 24px;
+  height: 100%;
+  object-fit: contain;
   border-radius: 12px;
+  align-self: stretch;
 }
 
 .section {
@@ -768,6 +772,15 @@ img {
 @media (max-width: 720px) {
   .nav-links {
     display: none;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .hero-image {
+    height: auto;
   }
 
   .feature-split {
