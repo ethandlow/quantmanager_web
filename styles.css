@@ -113,10 +113,9 @@ img {
 
 .hero {
   padding: 88px 0 40px;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 36px;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  align-items: center;
 }
 
 .hero h1 {
@@ -130,16 +129,10 @@ img {
   margin: 0 0 22px;
 }
 
-.hero-card {
-  background: linear-gradient(135deg, rgba(107, 123, 255, 0.18), rgba(56, 224, 196, 0.12));
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 20px;
-  box-shadow: var(--shadow);
-}
-
-.hero-card small {
-  color: var(--muted);
+.hero-image {
+  width: 100%;
+  margin-top: 24px;
+  border-radius: 12px;
 }
 
 .section {
