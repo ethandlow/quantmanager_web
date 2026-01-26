@@ -31,27 +31,88 @@
         <div class="pill-row">
           <span class="pill">Install</span>
           <span class="pill">Configure</span>
-          <span class="pill">Verify</span>
         </div>
         <div class="setup-step">
           <strong>1. Install the plugin</strong>
-          <div class="muted">Build or copy the plugin output into your Quantower plugins directory.</div>
+          <div class="muted">
+            Close Quantower (recommended), then copy the <code>QuantManager</code> folder into:
+            <code>Quantower\Settings\Scripts\plug-ins\</code>
+            <br />
+            After copying, confirm the DLL exists (example path):
+            <code>QuantManager\net8\QuantManager.dll</code>
+          </div>
         </div>
         <div class="setup-step">
           <strong>2. Launch Quantower</strong>
-          <div class="muted">Open Quantower and enable the plugin from the scripts/plugins list.</div>
+          <div class="muted">
+            Open Quantower and load the plugin panel(s):
+            <strong>Quant Manager</strong> and (optional) <strong>Edit Account</strong>.
+          </div>
         </div>
         <div class="setup-step">
           <strong>3. Configure accounts</strong>
-          <div class="muted">Open the Edit Account panel to set limits, formulas, and scheduled flatten times.</div>
+          <div class="muted">
+            Open <strong>Edit Account</strong> to set firm/type labels, limits, trailing settings, formulas, and scheduled flatten times.
+            Use the <strong>Variables</strong> list as your source of truth for what you can reference inside brackets like <code>[balance]</code>.
+          </div>
         </div>
         <div class="setup-step">
           <strong>4. Set templates</strong>
-          <div class="muted">Create templates for consistent limits and formulas, then apply them in bulk.</div>
+          <div class="muted">
+            Save a reusable template (limits + formulas), then apply it to multiple accounts.
+            If you import templates by copying JSON files, use <strong>Refresh templates</strong> to re-scan the folder.
+          </div>
         </div>
         <div class="setup-step">
           <strong>5. Verify enforcement</strong>
-          <div class="muted">Use a demo account to confirm locks, flattening, and daily resets work as expected.</div>
+          <div class="muted">
+            Use a demo/sim account to confirm locks, flattening, and daily resets behave as expected.
+            Start simple (one account, one limit), then layer in trailing + formulas.
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="pill-row">
+          <span class="pill">Tutorial</span>
+          <span class="pill">Formulas</span>
+          <span class="pill">Templates</span>
+        </div>
+
+        <div class="setup-step">
+          <strong>Formula basics (the “why”)</strong>
+          <div class="muted">
+            Firms often calculate drawdown or trailing rules differently. Quant Manager lets you define the exact math you want,
+            and the plugin enforces it deterministically every session.
+          </div>
+        </div>
+
+        <div class="setup-step">
+          <strong>Example: custom Drawdown</strong>
+          <div class="muted">
+            Track drawdown off peak balance:
+            <br />
+            <code class="code-block">MAX(0, [peak] - [balance])</code>
+          </div>
+        </div>
+
+        <div class="setup-step">
+          <strong>Example: trailing threshold line</strong>
+          <div class="muted">
+            A simple “trail by $300 from peak” line:
+            <br />
+            <code class="code-block">MAX([peak], [balance]) - 300</code>
+            <br />
+            Choose a trailing mode that fits your rules (e.g., always check vs only check when flat).
+          </div>
+        </div>
+
+        <div class="setup-step">
+          <strong>Save &amp; apply templates (fast multi-account setup)</strong>
+          <div class="muted">
+            Once one account is perfect, save it as a template and apply it to the rest.
+            Templates are stored as JSON files alongside the plugin, so you can share/import them by copying files.
+          </div>
         </div>
       </section>
     </main>

@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Quant Manager — Risk Controls for Quantower</title>
-    <meta name="description" content="Quant Manager is a Quantower plugin for account oversight, risk enforcement, scheduled flattening, and formula-driven metrics." />
+    <title>Quant Manager</title>
+    <meta name="description" content="Quant Manager is a Quantower plugin for account oversight and automated risk enforcement." />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -26,9 +26,9 @@
         <div>
           <div class="pill-row">
             <span class="pill">Quantower plugin</span>
-            <span class="pill">Account oversight</span>
+            <span class="pill">Risk management</span>
           </div>
-          <h1>The Most Advanced Risk Management Plugin for Quantower</h1>
+          <h1>The Most Advanced Account Manager for Quantower</h1>
           <p>
             Quant Manager is a powerful Quantower plugin designed to give traders complete visibility and control over all of their accounts. 
             It combines a clean, consolidated dashboard with automated risk enforcement tools—helping you protect capital, stay compliant 
@@ -164,6 +164,39 @@
             </button>
           </div>
         </div>
+      </section>
+
+      <section id="formulas" class="accent-section fade-section">
+        <h2>Custom formulas that match your firm’s rules</h2>
+        <p class="muted">
+          Every firm labels metrics differently. Quant Manager lets you define your own P&amp;L, drawdown,
+          and trailing threshold math using formulas—then we enforce it automatically.
+        </p>
+
+        <div class="feature-showcase">
+          <div class="showcase-card">
+            <strong>Drawdown your way</strong>
+            <div class="muted">Example:</div>
+            <code class="code-block">MAX(0, [peak] - [balance])</code>
+          </div>
+
+          <div class="showcase-card">
+            <strong>Firm-specific variables</strong>
+            <div class="muted">Reference any available Quantower variable:</div>
+            <code class="code-block">[unrealized pnl (ote)]</code>
+          </div>
+
+          <div class="showcase-card">
+            <strong>Trailing threshold you control</strong>
+            <div class="muted">Example “trail by $300 from peak” line:</div>
+            <code class="code-block">MAX([peak], [balance]) - 300</code>
+          </div>
+        </div>
+
+        <p class="muted" style="margin-top: 14px;">
+          Supported: <code>IF()</code>, <code>MAX()</code>, <code>MIN()</code>, arithmetic, parentheses, and comparisons.
+          Save your setup as a template and apply it to multiple accounts in seconds.
+        </p>
       </section>
 
       <section class="section callout fade-section">

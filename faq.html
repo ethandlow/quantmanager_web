@@ -33,26 +33,149 @@
           <span class="pill">Pricing</span>
           <span class="pill">Enforcement</span>
         </div>
-        <div class="faq-item">
-          <h4>Does Quant Manager run inside Quantower?</h4>
-          <p class="muted">Yes. It is a Quantower plugin that runs locally inside your Quantower instance.</p>
-        </div>
-        <div class="faq-item">
-          <h4>How are limits enforced?</h4>
-          <p class="muted">The plugin monitors account P&L and balance metrics and locks/flatttens accounts when limits are breached.</p>
-        </div>
-        <div class="faq-item">
-          <h4>Can I schedule automatic flattening?</h4>
-          <p class="muted">Yes. Set a date/time per account and the scheduler will flatten when the time is reached.</p>
-        </div>
-        <div class="faq-item">
-          <h4>Are settings saved across restarts?</h4>
-          <p class="muted">Yes. Account settings and enforcement flags are persisted to local storage.</p>
-        </div>
-        <div class="faq-item">
-          <h4>Where do I buy a license?</h4>
-          <p class="muted">Purchasing and licensing are handled on the main site for now.</p>
-        </div>
+        <details class="faq-item">
+          <summary>
+            <span class="faq-question">Does Quant Manager run inside Quantower?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-answer muted">
+            Yes. It is a Quantower plugin that runs locally inside your Quantower instance.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            <span class="faq-question">How do I install Quant Manager?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-answer muted">
+            <ol>
+              <li><strong>Close Quantower</strong> (recommended).</li>
+              <li>
+                Copy the <code>QuantManager</code> folder to:
+                <code>Quantower\Settings\Scripts\plug-ins\QuantManager</code>
+              </li>
+              <li>
+                Confirm this file exists after copying:
+                <code>QuantManager\QuantManager.dll</code>
+              </li>
+              <li>Open Quantower.</li>
+              <li>
+                Open the plugin panel(s): <strong>Quant Manager</strong> and (optional) <strong>Edit Account</strong>.
+              </li>
+            </ol>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            <span class="faq-question">How are limits enforced?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-answer muted">
+            The plugin monitors account P&amp;L and balance metrics and locks/flattens accounts when limits are breached.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            <span class="faq-question">Can I schedule automatic flattening?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-answer muted">
+            Yes. Set a date/time per account and the scheduler will flatten when the time is reached.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            <span class="faq-question">Where are my settings and templates stored?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-answer muted">
+            <ul>
+              <li>
+                <strong>Settings</strong>: saved locally alongside the plugin so they persist across restarts.
+              </li>
+              <li>
+                <strong>Templates</strong>: stored as JSON files in the templates folder next to the plugin.
+                You can share/import by copying the JSON files.
+              </li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            <span class="faq-question">How do I create and apply a template?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-answer muted">
+            <ol>
+              <li>Open <strong>Edit Account</strong>.</li>
+              <li>Set firm/type, limits, formulas, and trailing settings.</li>
+              <li>Set a <strong>Template Name</strong>, then choose <strong>Save template</strong>.</li>
+              <li>In Quant Manager: right-click account(s) → <strong>Apply template</strong>.</li>
+              <li>If you copied a template JSON into the folder: choose <strong>Refresh templates</strong>.</li>
+            </ol>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            <span class="faq-question">What formula syntax is supported?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-answer muted">
+            Use <code>IF()</code>, <code>MAX()</code>, <code>MIN()</code>, parentheses, + - * / %, and comparisons
+            (<code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>==</code>, <code>!=</code>).
+            Comparisons evaluate to 1 (true) or 0 (false).
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            <span class="faq-question">Example: custom Drawdown</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-answer muted">
+            Track drawdown off your peak balance:
+            <br />
+            <code class="code-block">MAX(0, [peak] - [balance])</code>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            <span class="faq-question">Example: trailing threshold (locks when balance falls below it)</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-answer muted">
+            A simple “trail by $300 from peak” threshold:
+            <br />
+            <code class="code-block">MAX([peak], [balance]) - 300</code>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            <span class="faq-question">Are settings saved across restarts?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-answer muted">
+            Yes. Account settings and enforcement flags are persisted to local storage.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            <span class="faq-question">Where do I buy a license?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-answer muted">
+            Use the <strong>Get Access</strong> button in the header to purchase/download.
+          </div>
+        </details>
       </section>
     </main>
 
